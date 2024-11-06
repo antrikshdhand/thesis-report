@@ -1,0 +1,133 @@
+\usepackage[
+    inner=2.5cm,
+    outer=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm
+]{geometry}
+\pdfpagewidth=\paperwidth 
+\pdfpageheight=\paperheight
+\usepackage[utf8]{inputenc}
+
+\emergencystretch=1em
+
+%%% Bibliography %%%
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{references.bib}
+\AtEveryBibitem{
+    %\clearfield{doi}
+    \clearfield{url}
+    \clearfield{urlyear}
+    \clearfield{urlmonth}
+    \clearfield{note}
+    % \clearfield{isbn}
+    \clearfield{issn}
+    \clearfield{eprint}
+    \clearfield{eprinttype}
+    \clearfield{langid}
+}
+
+%%% Image packages %%%
+\usepackage{graphicx}
+\graphicspath{ {./img/} }
+\usepackage{subcaption} % For subfigures
+
+%%% TikZ %%%
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows.meta, positioning}
+
+% For drawing neural networks
+\usepackage{neuralnetwork}
+\newcommand{\xin}[2]{$x_#2$}
+\newcommand{\xout}[2]{$\hat x_#2$}
+
+%%% Tables %%%
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{rotating}
+
+%%% Text %%%
+\usepackage{xurl} % line breaks for urls
+\usepackage{hyperref} % hyperlinks
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue!80,     % Citation color
+    linkcolor=black,    % Regular internal links (e.g., table of contents)
+    filecolor=black,    
+    urlcolor=black,
+    linktoc=all,        % Colors only the content links, not glossary
+    % hidelinks,          % Hides color for glossary/acronyms and TOC links
+    unicode=true
+}
+\usepackage{setspace} % line spacing
+\usepackage{lipsum} % lorem ipsum paragraphs
+\usepackage[svgnames]{xcolor} % colors
+\usepackage[font={small},labelfont={bf},margin=12ex]{caption} % Makes bold labelled and smaller font captions.
+\renewcommand{\thefootnote}{\alph{footnote}} % Lettered footnotes 
+
+\usepackage[acronym, nonumberlist, nopostdot]{glossaries} %%% List of Abbreviations
+\makeglossaries
+
+\usepackage{titlesec}
+\titleformat*{\paragraph}{\itshape\mdseries}
+
+%%% TColorBox %%%
+\usepackage{tcolorbox}
+% Define a counter for research questions
+\newcounter{researchquestion}
+\setcounter{researchquestion}{1}
+\renewcommand{\theresearchquestion}{\arabic{researchquestion}}
+
+% Define a tcolorbox style for the research question with an auto-incremented number
+\newtcolorbox[auto counter, number within=section]{researchquestion}{%
+  colback=gray!10, % Light grey background
+  colframe=black!90, % Slightly darker grey for the border
+  fonttitle=\bfseries,
+  title=Research Question \theresearchquestion\stepcounter{researchquestion},
+  boxrule=0.5mm,
+  width=\textwidth
+}
+
+% Poetry
+\usepackage{verse}
+\newcommand{\attrib}[1]{%
+\nopagebreak{\raggedleft\footnotesize #1\par}}
+\renewcommand{\poemtitlefont}{\normalfont\large\itshape\centering}
+\usepackage{epigraph}
+\setlength\epigraphrule{0pt}
+
+%%% Math %%%
+\usepackage{amsmath}
+\usepackage{bm} % Bold vectors
+
+
+% %%%%%%% CODE INPUT %%%%%%%
+% \usepackage{listings}
+% \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+% \definecolor{codegray}{rgb}{0.5,0.5,0.5}
+% \definecolor{backgray}{RGB}{235, 235, 235}
+
+% % Code input styling
+% \lstset{
+%     language=Python,
+%     basicstyle=\linespread{1.2}\ttfamily\small,
+%     numbers=left,
+%     numberstyle=\tiny\color{codegray},
+%     columns=fixed,
+%     breaklines=true,
+%     backgroundcolor=\color{backcolour},
+%     frame=single,
+%     showstringspaces=false,
+%     commentstyle=\color{codegray},
+%     literate={~} {$\sim$}{1},
+%     upquote=true
+% }
+
+% % Code output styling
+% \lstdefinestyle{output}{
+%     basicstyle=\linespread{1.2}\ttfamily\small,
+%     backgroundcolor=,
+%     numbers=none,
+%     frame=single,
+%     breaklines=true,
+% }

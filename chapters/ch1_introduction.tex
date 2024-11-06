@@ -1,0 +1,89 @@
+\chapter{Introduction}
+
+% Background
+
+How do submarine operators detect the presence of vessels in the waters around them? One of the primary technologies used for this is SOund Navigation And Ranging (sonar), which uses the propagation of sound waves in water to analyse the presence, location, and nature of underwater objects \cite{niu_advances_2023}. Sonar works analogously to how audio recording works in air. Sound is carried through the water medium as longitudinal waves with a certain frequency and energy, and this pressure is picked up by a recording device called a hydrophone. These hydrophones convert the mechanical energy of the wave into an electrical signal, which can then be analysed using a variety of methods in the field of digital signal processing \cite{waite_sonar_2002, domingos_survey_2022}.
+
+Classifying an object based on its sonar signature, a task known as underwater acoustic classification or \acrfull{uatr}, is a difficult job. This process is traditionally split into two stages: feature extraction and classification. Feature extraction focuses on identifying and isolating key attributes from raw sonar signals, while classification involves applying various models to categorise the input signals based on these extracted features (see Figure \ref{fig:luo-flowchart}). Currently, both these tasks are being undertaken by teams of highly-trained sonar technicians around the world \cite{aslam_underwater_2024}. These teams use large databases of patterns and signals collected from known objects over the years to compare and classify a new incoming signal \cite{niu_advances_2023}. It is a slow and cumbersome task which at present relies on traditional rule-based learning techniques \cite{neupane_review_2020}.  However, with recent advancements in artificial intelligence, researchers aim to automate UATR, making it faster and potentially more accurate \cite{aslam_underwater_2024, neupane_review_2020}.
+
+\begin{figure}[htbp]
+\centering 
+\includegraphics[width=0.8\textwidth]{img/ch1/flowchart.png} 
+\caption{Flow chart of underwater acoustic signal acquisition and target recognition, obtained from \cite[Fig.~1]{luo_survey_2023}} 
+\label{fig:luo-flowchart} 
+\end{figure}
+
+\section{Problem statement}
+
+\textit{TO DO.}
+
+% Achieving high accuracy in underwater acoustic target recognition hinges on the quality of features extracted from sonar signals. However, developing optimal feature inputs for this task poses two major challenges: the inherent noise and complexity of the underwater environment, and the limitations of manual feature engineering.
+
+% The underwater environment is uniquely challenging due to physical factors that distort sound propagation, such as reflection, refraction, signal attenuation, and most importantly, ambient noise. The underwater environment is inherently noisy, with sonar signals disrupted by various sources such as marine life, vessel engines, and ocean currents. This interference often obscures target characteristics, complicating the extraction of clean, informative features from raw sonar data. Effective preprocessing techniques are thus crucial to denoise signals and isolate relevant acoustic features.
+
+% The second challenge lies in the limitations of feature engineering itself.  Traditional methods for UATR rely heavily on predefined, handcrafted features from the domain of digital signal processing, which may not always capture the most distinctive elements of a signal for machine learning models. As Bengio et al. highlight, ``the performance of machine learning methods is heavily dependent on the choice of data representation'' \cite{bengio_representation_2013}. This raises a key question: how can we ensure that manually designed feature representations are optimal for classification? Recent advancements in deep learning offer a promising solution through automatic feature extraction, where the model learns to identify and prioritise relevant signal characteristics without relying on human-defined input features. By leveraging deep learning for unsupervised feature extraction, we can aim to surpass traditional feature engineering, allowing the model to adaptively focus on the most important aspects of sonar signals.
+
+\section{Proposed solution}
+
+This thesis aims to improve the accuracy of UATR models by enhancing feature representations, focusing on two main areas: preprocessing techniques, to refine raw input signals, and deep feature extraction, to uncover latent, meaningful features automatically. Keeping a constant benchmark classifier (CNN-LSTM), we systematically experiment with different preprocessing and feature extraction techniques to evaluate their impact on classification performance. This approach enables us to isolate the effects of feature improvements from those of classification model changes.
+
+In the first area of exploration, preprocessing techniques, we investigate detrending and denoising strategies. For detrending we use the $\ell_1$ detrending algorithm, which removes long-term, low-frequency trends in the acoustic signal, helping to emphasise short-term variations that are more likely to capture unique target characteristics. Additionally, experiments in denoising are planned to evaluate the effectiveness of noise reduction frameworks, particularly the Noise2Noise methodology. Noise2Noise enables denoising without needing access to clean reference signals, making it suitable for real-world conditions where access to clean signals is infeasible. 
+
+In the area of deep feature extraction, two main approaches are tested. The first approach leverages autoencoders to automatically generate a compact latent space representation from input spectrograms. Unlike traditional, manually crafted feature extraction methods, which rely heavily on domain-specific knowledge and human intervention, autoencoders aim to learn informative features directly from the raw data. This approach bypasses the need for extensive domain expertise and allows us to potentially uncover latent patterns that could be missed by conventional methods. The second approach involves transfer learning. First, a pretrained transformer-based model, the Audio Spectrogram Transformer, is fine-tuned on the labelled DeepShip dataset to evaluate improvements in classification accuracy. Following this, we experiment with training an autoencoder on an unlabelled acoustic dataset and using the learned features as input to the CNN-LSTM classifier tested on DeepShip. Together, these strategies in deep feature extraction allow the model to benefit from both supervised fine-tuning and unsupervised representation learning.
+
+By applying these methods with a consistent CNN-LSTM classifier, this thesis assesses the contribution of each feature extraction technique, allowing for a precise evaluation of their impact on UATR performance.
+
+% \begin{enumerate}
+%     \item Preprocessing techniques: To improve the initial quality of input signals, we experiment with the following:
+%     \begin{itemize}
+%         \item Detrending: This involves applying the $\ell_1$ detrending algorithm to remove long-term, low-frequency trends in the signal, allowing the classifier to focus on short-term features more likely to represent unique target characteristics.
+%         \item Denoising: We propose experiments to investigate denoising efficacy, including using Noise2Noise, a framework that removes noise from signals without requiring clean reference signals. Additionally, we aim to develop an end-to-end architecture for classifying diverse noise types within the UATR context.
+%     \end{itemize}
+%     \item Deep feature extraction: Beyond preprocessing, we delve into more advanced feature extraction techniques:
+%     \begin{itemize}
+%         \item Autoencoders (AEs): We employ a stacked sparse autoencoder to generate a latent feature space from sonar spectrograms, aiming to identify compact, discriminative representations.
+%         \item Transfer learning: Leveraging unlabeled datasets, we will apply transfer learning, extracting features that could be fine-tuned for the DeepShip dataset, particularly using transformer-based architectures like Audio Spectrogram Transformer (AST).
+%     \end{itemize}
+% \end{enumerate}
+% By controlling the classifier architecture throughout these experiments, we can more precisely measure the effectiveness of each feature extraction method.
+
+\section{Key contributions}
+
+\textit{TO DO.}
+
+% \section{Motivation}
+
+% How do submarine operators detect the presence of vessels in the waters around them? One of the primary technologies used in naval navigation is SOund Navigation And Ranging (sonar), which uses the propagation of sound waves in water as a tool for communication, object detection, and source localisation, among other tasks \cite{niu_advances_2023}.
+
+% Sonar works analogously to how audio recording works in air. Sound is carried through the water medium as longitudinal waves with a certain frequency and energy, and this pressure is picked up by a recording device called a hydrophone. These hydrophones convert the mechanical energy of the wave into an electrical signal, which can then be analysed using a variety of methods in the field of digital signal processing \cite{waite_sonar_2002, domingos_survey_2022}.
+
+% Classifying an object based on its sound signature, a task known as underwater acoustic classification or \acrfull{uatr}, is a difficult job. There are two main stages involved: a) feature extraction, which involves selecting and computing the most useful properties of the incoming sonar signal, and b) target classification, which uses the aforementioned features to try and classify the signal's source (Figure \ref{fig:luo-flowchart}). Currently, these procedures are being undertaken by teams of highly-trained sonar technicians around the world \cite{aslam_underwater_2024}. These teams use large databases of patterns and signals collected over the years from known objects to compare and classify a new incoming signal \cite{niu_advances_2023}. It is a slow and cumbersome task which at present relies on traditional rule-based learning techniques \cite{neupane_review_2020}. 
+
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{img/ch1/flowchart.png}
+%     \caption{Flow chart of underwater acoustic signal acquisition and target recognition, obtained from \cite[Fig.~1]{luo_survey_2023}}
+%     \label{fig:luo-flowchart}
+% \end{figure}
+
+% However, with recent advancements in \acrfull{ai}, researchers are looking to optimise this \acrshort{uatr} process by employing \acrfull{ml} techniques to automatically classify a vessel given its passive sonar signal output \cite{neupane_review_2020}. A real-time classification system deployed underwater would save sonar operators thousands of hours in manual processing and classification time, as well as be able to provide live classifications to the crew on-board without having to rely on land-based operators \cite{aslam_underwater_2024}. This would reduce rates of false negatives, which, in a national security setting such as the detection of foreign vessels in sovereign waters, can be extremely costly.
+
+% \section{Problem statement}
+
+% In many existing \acrlong{ml}-based classification systems, raw sonar signals are processed using traditional digital signal processing techniques to convert them into more interpretable features. For example, one commonly used method is the \acrfull{stft}, which transforms the input signal into a time-frequency representation, resulting in a spectrogram. This spectrogram is then passed into various classification models, ranging from conventional algorithms like \acrfull{knn} and \acrfull{svm} to more advanced deep learning architectures such as \acrfull{cnn}, \acrfull{rnn}, and \acrfull{lstm}.
+
+% As Bengio et al. emphasise, ``the performance of machine learning methods is heavily dependent on the choice of data representation (or features) on which they are applied'' \cite{bengio_representation_2013}. This brings us to a fundamental challenge: how can we ensure that a spectrogram -- or any other feature we extract -- is truly the \textit{optimal} representation for accurate classification?
+
+% Indeed, the ultimate goal in feature engineering is to identify the most informative and distinguishing features that can enhance the classifier’s ability to accurately categorise input signals. My role in this project involves addressing this challenge by exploring representation learning techniques to automate the feature extraction process. By leveraging self-supervised and unsupervised learning methods, I aim to automatically uncover latent features within the raw data, without relying on predefined feature sets. This approach seeks to extend beyond traditional feature engineering, allowing for deeper and more meaningful representations, ultimately leading to improved classification performance.
+
+\section{Outline}
+
+The structure of this thesis is as follows:
+
+\paragraph{Chapter 2: Background and Literature Review} This chapter provides essential theoretical background for readers, covering key aspects of underwater acoustic signal propagation, such as noise sources and their impact on signal quality, which are relevant for the denoising work explored later. The chapter also offers an introduction to artificial intelligence and concludes with a comprehensive literature review, summarising over 50 foundational and recent high-impact studies within the field.
+
+\paragraph{Chapter 3: Establishing a Benchmark Performance} Here, we establish the CNN-LSTM architecture as the benchmark classifier model for our experiments, detailing its structure, configuration, and baseline performance metrics. This consistent architecture serves as a point of reference for evaluating all subsequent feature-related modifications.
+
+\paragraph{Chapter 4: Experiments in Preprocessing Techniques} This chapter delves into various preprocessing techniques to enhance raw input data quality, focusing on methods such as detrending and denoising. Wwe assess the impact of these techniques on the classification performance of the benchmark model.
+
+\paragraph{Chapter 5: Experiments with Deep Feature Extraction} Building on preprocessing improvements, this chapter explores advanced feature extraction approaches, including the application of autoencoders and transfer learning. We investigate how these methods affect model accuracy, offering insight into the effectiveness of learned representations for underwater acoustic target recognition.
