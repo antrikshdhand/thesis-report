@@ -101,6 +101,24 @@
 \usepackage{bm} % Bold vectors
 
 
+\newcommand{\tikzcuboid}[4]{% width, height, depth, scale
+\begin{tikzpicture}[scale=#4]
+\foreach \x in {0,...,#1}
+{   \draw (\x ,0  ,#3 ) -- (\x ,#2 ,#3 );
+    \draw (\x ,#2 ,#3 ) -- (\x ,#2 ,0  );
+}
+\foreach \x in {0,...,#2}
+{   \draw (#1 ,\x ,#3 ) -- (#1 ,\x ,0  );
+    \draw (0  ,\x ,#3 ) -- (#1 ,\x ,#3 );
+}
+\foreach \x in {0,...,#3}
+{   \draw (#1 ,0  ,\x ) -- (#1 ,#2 ,\x );
+    \draw (0  ,#2 ,\x ) -- (#1 ,#2 ,\x );
+}
+\end{tikzpicture}
+}
+
+
 % %%%%%%% CODE INPUT %%%%%%%
 % \usepackage{listings}
 % \definecolor{backcolour}{rgb}{0.95,0.95,0.92}

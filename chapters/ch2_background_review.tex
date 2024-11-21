@@ -461,9 +461,7 @@ Feng and Zhu's 2022 paper introduced a new model, the \textit{UATR-Transformer} 
 
 The term ``deep features'' refers to representations that are automatically extracted from input data using deep learning techniques. These features, unlike traditional signal processing methods (Section \ref{sec:traditional-features}), are not hand-crafted by domain experts but are rather learned by the model itself during training. This section delves into the most prominent feature extraction mechanism in modern \acrlong{dl} literature -- encoder-decoder networks -- and specifically focuses on a subset of these networks called \acrlong{ae}s (\acrshort{ae}s).
 
-\subsubsection{Encoder-decoder networks}
-
-%Therefore, the two most natural applications of such networks are feature extraction and dimensionality reduction.
+\subsubsection{Encoder-decoder networks}\label{subsubsection:encoder-decoder}
 
 At its core, an encoder-decoder network is a neural network architecture designed to take some input data, compress it into a simpler form, and then reconstruct the original data from that compressed version. Popularised by Hinton and Salakhutdinov in their seminal 2006 paper \textit{Reducing the Dimensionality of Data with Neural Networks} \cite{hinton_reducing_2006}, these networks are made up of two main parts: the \textit{encoder} and the \textit{decoder}. These parts are typically connected through a middle layer known as the \textit{latent space} or \textit{bottleneck} (Figure \ref{fig:enc-dec-network}).
 
@@ -531,7 +529,7 @@ The combination of the above operations allows the network to progressively dete
 
 \subsubsection{Autoencoders}
 
-An \acrlong{ae} is a specialised form of an encoder-decoder network designed primarily for unsupervised learning. Unlike other encoder-decoder networks, \acrlong{ae}s do not have a classifier at the end of the decoder. Instead, they aim to minimise the reconstruction loss when reconstructing the input data from the compressed lower-dimensional latent space. As a result, the encoder is forced to learn which parts of the data are the most important, and the latent space becomes a good lower-dimensional characterisation of the original input \cite{ng_sparseautoencoder_2011newpdf_2010}. \Acrlong{ae}s are widely utilised in tasks such as data dimensionality reduction (acting as a non-linear PCA), denoising, unsupervised feature learning, and even transfer learning, where the learned representations are transferred to other models \cite{goodfellow_deep_2016}.
+An \acrlong{ae} is a specialised form of an encoder-decoder network designed primarily for unsupervised learning. Unlike other encoder-decoder networks, \acrlong{ae}s do not have a classifier at the end of the decoder. Instead, they aim to minimise the reconstruction loss when reconstructing the input data from the compressed lower-dimensional latent space. As a result, the encoder is forced to learn which parts of the data are the most important, and the latent space becomes a good lower-dimensional characterisation of the original input \cite{ng_sparse_2010}. \Acrlong{ae}s are widely utilised in tasks such as data dimensionality reduction (acting as a non-linear PCA), denoising, unsupervised feature learning, and even transfer learning, where the learned representations are transferred to other models \cite{goodfellow_deep_2016}.
 
 While there are many variations of autoencoders, there are three key types which are most prominent in the literature: the \acrfull{cae}, the \acrfull{sae}, and the \acrfull{vae}.
 
