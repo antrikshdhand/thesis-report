@@ -1,12 +1,12 @@
 \chapter{Background and Literature Review}
 
-\epigraph{\itshape People generally see what they look for, and hear what they listen for.}{---Harper Lee}
+{\Large INTRODUCTION HERE}
 
 The below section lays out the theoretical background on \acrfull{uatr} and conducts a broad survey of the most influential literature in the field. It also presents a detailed summary of the current publicly available datasets for use in \acrshort{uatr} research.
 
 \section{Foundational principles of sonar systems}
 
-The aim of this section is to provide the unfamiliar reader with a foundational understanding of underwater acoustics and sonar, essential for comprehending the primary content of this thesis. First, we contextualise our work by giving a brief overview of the historical development of acoustics and sonar technologies. Then, since sonar systems are fundamentally based on the principles of underwater signal propagation, we introduce key concepts and challenges encountered when working with underwater signals such as signal attenuation, multipath propagation, and ambient noise. Following this, we cover both active and passive sonar systems, outlining their mechanisms and the sonar equations that define their operation. Finally, we introduce a few applications of sonar systems including an introduction to the primary topic of this thesis, underwater acoustic target recognition.
+This section introduces readers unfamiliar with the subject to the foundational concepts of underwater acoustics and sonar, essential for understanding the core content of this thesis. It begins by contextualising this body of work by giving a brief overview of the historical development of acoustics and sonar technologies. Then, since sonar systems rely on the principles of underwater signal propagation, the discussion highlights key concepts and challenges when working with underwater signals such as signal attenuation, multipath propagation, and ambient noise. The section then examines active and passive sonar systems, explaining their mechanisms and the sonar equations that define their operation. Finally, it concludes by exploring several applications of sonar systems and introducing the thesis's primary focus: underwater acoustic target recognition.
 
 \subsection{Historical development of underwater acoustics and sonar}\label{sec:uw-history}
 
@@ -28,7 +28,7 @@ One of the key discoveries which allowed passive sonar to work so well in perfor
 
 Other technological improvements in the early stages of the Cold War included advances in array processing, where multiple sensors were used to improve signal detection, enhancing the range and accuracy of sonar systems. Additionally, algorithms were developed to filter useful sonar signals from background noise, employing methods like adaptive beamforming to focus on specific directions and improve the signal-to-noise ratio. The rise of scientific computing and the transition to digital signal processing further revolutionised the field, enabling more advanced techniques such as time-delay estimation and spectral analysis.
 
-Progress in underwater signal processing during the 1970s and early 1980s was closely linked to advancements in general signal processing techniques. Researchers in underwater acoustics focused on improving high-resolution signal processing -- that is, the ability to separate signals from sources with nearly identical frequencies or positions, such as two nearby ships or objects \cite{vaccaro_past_1998}. These efforts greatly enhanced the precision of sonar systems, enabling them to detect underwater objects more effectively, even in noisy or interference-heavy environments.
+Progress in underwater signal processing during the 1970s and early 1980s was closely linked to advancements in general signal processing techniques. Researchers in underwater acoustics focused on improving high-resolution signal processing -- that is, the ability to separate signals from sources with nearly identical frequencies or positions, such as two nearby ships or objects \cite{vaccaro_past_1998}. These efforts greatly enhanced the precision of sonar systems, enabling them to detect underwater objects more effectively, even in busy environments.
 
 It was during the 1980s and 1990s that the field of \textit{automatic} underwater acoustic classification, which this thesis is rooted in, truly came into its own. This shift was largely driven by the Cold War, when sonar engineers and submarine builders became acutely aware of the need to make ships ``quieter.'' As a result, vessel-radiated noise was reduced, making it harder for sonar operators to detect man-made targets. According to Vaccaro et al. in their 1998 review of the field:
 
@@ -38,12 +38,9 @@ It was during the 1980s and 1990s that the field of \textit{automatic} underwate
 
 Finally, the 2000s saw significant advances in environmental applications of underwater acoustics. Many studies during this period greatly focused on the growing concerns over anthropogenic underwater noise from shipping, military sonar, and industrial activities, which pose threats to marine ecosystems by interfering with the communication and behaviour of aquatic life \cite{erbe_underwater_2002, slabbekoorn_noisy_2010, wysocki_diversity_2007}.
 
-Now that the field of underwater acoustics has been grounded in history, we shall continue by presenting a brief summary of the relevant theoretical concepts in the field.
-
-
 \subsection{Signal propagation in the underwater environment}\label{subsec:sig-prop-uw-env}
 
-Let us begin with the most fundamental concept in underwater acoustics -- sound. Being a mechanical wave, the propagation of sound relies on the density and elasticity of the medium it travels through. In turn, the density and elasticity of water is influenced by factors such as temperature, salinity, and pressure \cite{sinay_diving_2024}. Hence, the speed of sound in water has many complex formulations \cite{leroy_new_2008}. A simplified, empirical formula for calculating the speed of sound, $c$, in the ocean based on temperature $T$ (in degrees Celsius), depth $z$ (in meters), and salinity $S$ (in parts per thousand) is given by \cite{abraham_underwater_2019}: 
+The most fundamental concept in underwater acoustics is sound. Being a mechanical wave, the propagation of sound relies on the density and elasticity of the medium it travels through. In turn, the density and elasticity of water is influenced by factors such as temperature, salinity, and pressure \cite{sinay_diving_2024}. Hence, the speed of sound in water is governed by complex relationships that incorporate these variables \cite{leroy_new_2008}. A simplified, empirical formula for calculating the speed of sound, $c$, in the ocean based on temperature $T$ (in degrees Celsius), depth $z$ (in meters), and salinity $S$ (in parts per thousand) is given by \cite{abraham_underwater_2019}: 
 \begin{equation}
 c = 1449.2 + 4.6T + 0.055T^2 + 1.39(S - 35) + 0.016z \label{eq:speed-of-sound-in-water}
 \end{equation}
@@ -111,8 +108,6 @@ Finally, other anthropogenic activities, such as construction, offshore drilling
 
 \subsection{How does sonar work?}\label{subsec:sonar-working}
 
-Now that the fundamental principles of underwater sound propagation have been laid, it is time to briefly cover the operation of sonar systems.
-
 Sonar operates by converting acoustic energy into electrical signals, and vice versa, through specialised underwater transducers known as hydrophones \cite{waite_sonar_2002, rodriguez_fundamentals_2023, abraham_underwater_2019}. In active sonar, the system first converts an electrical signal into an acoustic pulse using a transducer. The pulse travels through the water until it reflects off an object or the seafloor. The returning reflected sound wave, or echo, is captured by the hydrophones, which transform the acoustic energy back into electrical signals for analysis. This allows active sonar systems to determine both the range and orientation of underwater objects. Active sonar is commonly used in applications requiring high-resolution imaging, such as mapping the seafloor and identifying shipwrecks.
 
 In contrast, passive sonar operates by listening for sounds naturally produced in the underwater environment, such as those from ship engines, propellers, biological sources, or geological activity. Passive sonar systems do not emit sound waves themselves, making them highly advantageous in military operations for stealth purposes, as they cannot be detected. However, unlike active sonar, passive systems cannot directly measure the range of an object unless multiple sensors are used to triangulate the sound source.
@@ -139,7 +134,7 @@ In conventional underwater acoustic target recognition, human sonar operators ar
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{img/ch2/sonar_operator.png}
+    \includegraphics[width=0.9\textwidth]{img/ch2/sonar_operator.png}
     \caption{Sonar operators observing broadband and narrowband displays, obtained from \cite{amick_how_2020}.}
     \label{fig:enter-label}
 \end{figure}
@@ -150,21 +145,9 @@ Once a general classification is made, sonar operators transition to the narrowb
 
 For example, the harmonic structure of mechanical noise generated by a ship's engine or propeller is distinct and recognisable due to its periodic nature, resulting in a clear pattern of fundamental frequencies and their harmonics \cite{chin-hsing_classification_1998}. In contrast, the random noise produced by environmental factors like wind, waves, or marine life is more dispersed across the spectrum, often lacking this periodicity. Operators also look for modulation patterns (changes in amplitude or frequency over time) that may reveal whether the sound is coming from a rotating propeller, hydraulic machinery, or other mechanical components. The operator may also apply band-pass filters to isolate frequencies associated with specific targets, such as the \acrfull{lofar} technique, which focuses on low-frequency sounds characteristic of large vessels. This in-depth spectral analysis typically takes between 30 to 60 seconds, during which operators confirm or revise their initial broad classification \cite{amick_how_2020}.
 
-It is widely accepted that the job of a sonar operator is a challenging task. In high-contact environments, operators face the challenge of managing multiple potential targets simultaneously. They must continuously verify bearings and frequencies, ensuring that the sonar system maintains a reliable track on all contacts. This task is mentally demanding, and sonar watches can last for up to six hours, requiring intense concentration from operators. In addition, due to the inherent setting of the job, sonar operators never truly know that their classification is correct! These are just a few compelling reasons as to why the conventional approach to \acrshort{uatr} continues to dominate in today’s naval operations despite being much more resource-intensive. The expertise, intuition, inferential comprehension, and real-time decision making ability of sonar operators provides a level of accuracy and reliability in vessel classification that no \acrshort{ai} system has fully replaced.
+It is widely accepted that the job of a sonar operator is a challenging task. In high-contact environments, operators face the challenge of managing multiple potential targets simultaneously. They must continuously verify bearings and frequencies, ensuring that the sonar system maintains a reliable track on all contacts. This task is mentally demanding, and sonar watches can last for up to six hours, requiring intense concentration from operators. In addition, due to the inherent setting of the job, sonar operators never truly know that their classification is correct. These are just a few compelling reasons as to why the conventional approach to \acrshort{uatr} continues to dominate in today’s naval operations despite being much more resource-intensive. The expertise, intuition, inferential comprehension, and real-time decision making ability of sonar operators provides a level of accuracy and reliability in vessel classification that no \acrshort{ai} system has fully replaced.
 
 It is important to reflect on this in order to appreciate the inherent limitations of applying \acrshort{ai} techniques like \acrlong{ml} to \acrshort{uatr}. Most modern \acrshort{ai} methods are designed to create \textit{rational agents} -- machines that \textit{act rationally} and ``do the right thing'' by making decisions that maximise some performance metric. For example, \acrlong{ml} models aim to uncover underlying patterns in datasets and optimise their predictions by minimising error through a loss function. This is fundamentally different from the earlier, \textit{human-centred} approaches to \acrshort{ai}, which sought to build systems that could think or act like humans (Table \ref{tab:ai-approaches}) \cite{carnegie_mellon_university_human_2001, russell_artificial_2021}\footnote{See Section \ref{subsec:ai-history} for more on the historical development of \acrshort{ai}.}.
-
-\begin{table}[htbp]
-\centering
-\begin{tabular}{cc}
-\toprule
-\textbf{Human-centred approach} & \textbf{Rationality-centred approach} \\ \midrule
-Think like humans & Think rationally \\
-Act like humans & Act rationally \\ \bottomrule
-\end{tabular}
-\caption{The four historical perspectives of artificial intelligence proposed by Russell and Norvig \cite{russell_artificial_2021}.}
-\label{tab:ai-approaches}
-\end{table}
 
 This distinction matters because \acrshort{uatr} is a field that inherently benefits from human abilities such as inference, intuition, context-driven decision-making, and problem-solving. As discussed previously in this section, the underwater acoustic environment is incredibly complex and dynamic. Ambient background noise levels can change drastically within hours, properties such as reflection, refraction, signal attenuation and multipath propagation introduce complexities with signal propagation, and the qualities of sound can differ based on numerous factors such as temperature, salinity and pressure. In such a challenging environment, thinking like a human by synthesising diverse streams of information, including past experience, environmental context, and indirect clues, to form a probable classification for an incoming signal is an almost essential part of the job, and is a skill not easily replicated by \acrshort{ai} systems optimised solely for pattern recognition \cite{kamal_deep_2013}.
 
@@ -173,7 +156,7 @@ Despite this, there has been a concerted effort in recent years to develop \acrs
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{A review of traditional features for UATR}\label{sec:traditional-features}
 
-Having established a foundational understanding of underwater acoustics and \acrlong{uatr}, we now shift focus to the crucial first step in any \acrshort{uatr} system: feature selection and extraction. Feature extraction is the process of identifying and isolating key characteristics of the acoustic signal that can be used to effectively classify underwater targets. This process can be broadly divided into two major categories: traditional signal processing techniques and modern deep learning or self-supervised methods. The former draws from well-established concepts in signal processing, often inspired by physics and human auditory perception, while the latter relies on models that can automatically learn representations from raw data. Understanding traditional techniques remains essential, as many machine learning algorithms build upon these well-established features, incorporating them as input representations. In the following section, we provide a brief overview of traditional feature extraction methods, while deep learning-based feature extraction is discussed in detail in Section \ref{subsec:deep-features}.
+Feature extraction is the process of identifying and isolating key characteristics of the acoustic signal that can be used to effectively classify underwater targets, and is the crucial first step in any \acrshort{uatr} system. This process can be broadly divided into two major categories: traditional signal processing techniques and modern deep learning or self-supervised methods. The former draws from well-established concepts in signal processing, often inspired by physics and human auditory perception, while the latter relies on models that can automatically learn representations from raw data. Understanding traditional techniques remains essential, as many machine learning algorithms build upon these well-established features, incorporating them as input representations. In the following section, we provide a brief overview of traditional feature extraction methods, while deep learning-based feature extraction is discussed in detail in Section \ref{subsec:deep-features}.
 
 %This section also covers two common preprocessing techniques -- denoising and detrending -- that are often applied to enhance signal quality before feature extraction.
 
@@ -237,17 +220,17 @@ The \acrfull{lofar} spectrum focuses on low-frequency noise analysis, which is c
 \subsection{Time-frequency representations}
 
 \subsubsection{Spectrograms}
-Spectrograms display the frequency content of a signal over time. They are obtained by applying the Short-Time Fourier Transform and plotting the magnitude of the spectrum. Time is on the x-axis, frequency on the y-axis, and magnitude on the z-axis.
+Spectrograms display the frequency content of a signal over time. They are obtained by applying the Short-Time Fourier Transform and plotting the magnitude of the spectrum. Time is on the $x$-axis and frequency is on the $y$-axis.
 
 \subsubsection{Wavelet decomposition}
 Wavelet decomposition involves analysing a signal at multiple scales using wavelets, which are waves with a finite duration and time with zero mean. Wavelet decomposition has proven to be suitable for analysing signals that contain information at different frequencies and time.
 
 \subsubsection{Track detection}
 
-As discussed in-depth in Section \ref{subsubsec:uatr-intro}, narrowband sounds radiated by a ship's internal machinery or propellers typically form distinct tracks on a spectrogram. Identifying these frequency tracks can reveal critical details about the source's movement or function. Automatically detecting these tracks is the goal of \textit{track detection}. There have been numerous algorithms devised to solve this problem, with the most recent comprehensive survey of the field being undertaken by Lampert and O'Keefe in 2010 \cite{lampert_survey_2010}. However, given that this survey is over a decade old, it does not incorporate newer deep learning techniques that have shown promising results in track detection. To address this gap, Table \ref{tab:track-detection-review} offers a brief literature review of recent advancements in the field.
-
 \begin{sidewaystable}
 \centering
+\caption{A brief literature review of track detection algorithms.}
+\label{tab:track-detection-review}
 \begin{tabular}{llp{16cm}} % Adjust width as necessary
 \toprule
 \textbf{Paper} & \textbf{Year} & \textbf{Notes} \\ \midrule
@@ -265,14 +248,15 @@ Li et al. \cite{li_joint_2023} & 2023 & Introduces \acrshort{dl} framework \text
 Zhou et al. \cite{zhou_weak_2023} & 2023 & Uses a genetic algorithm and stochastic resonance approach for enhancing track detection in low \acrshort{snr} environments. \\
 Li et al. \cite{li_weak_2024} & 2024 & Introduces \textit{DEDAN}, a convolutional encoder-decoder network which displays promising results compared to HMM and UNet. \\ \bottomrule
 \end{tabular}
-\caption{A brief literature review of track detection algorithms.}
-\label{tab:track-detection-review}
 \end{sidewaystable}
+
+As discussed in-depth in Section \ref{subsubsec:uatr-intro}, narrowband sounds radiated by a ship's internal machinery or propellers typically form distinct tracks on a spectrogram. Identifying these frequency tracks can reveal critical details about the source's movement or function. Automatically detecting these tracks is the goal of \textit{track detection}. There have been numerous algorithms devised to solve this problem, with the most recent comprehensive survey of the field being undertaken by Lampert and O'Keefe in 2010 \cite{lampert_survey_2010}. However, given that this survey is over a decade old, it does not incorporate newer deep learning techniques that have shown promising results in track detection. To address this gap, Table \ref{tab:track-detection-review} offers a brief literature review of recent advancements in the field.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Artificial intelligence for UATR}
 
-We now turn to providing the reader with the essential background knowledge to understand how \acrlong{ai} and \acrlong{ml} techniques are used for \acrshort{uatr}. As usual, we begin with a brief historical review of the field. We then proceed to perform a literature review of classification techniques from over 50 papers in the field, as well as discussing how features can be automatically extracted from input data through \acrlong{dl} techniques. Finally, we end with a review of the datasets which enable us to train \acrshort{ml} models for \acrshort{uatr}.
+This section provides the reader with the necessary background to understand how \acrlong{ai} and \acrlong{ml} techniques are used for \acrshort{uatr}. It begins with a brief historical overview of the field, tracing its development over the 20th and 21st centuries. A comprehensive literature review of classification techniques follows, drawn from over 50 relevant studies. The discussion then shifts to the use of \acrlong{dl} methods for the automatic extraction of features from input data. Finally, the section concludes with an overview of the datasets commonly used to train \acrshort{ml} models for \acrshort{uatr}.
 
 \subsection{Historical development of AI}\label{subsec:ai-history}
 
@@ -283,6 +267,19 @@ We now turn to providing the reader with the essential background knowledge to u
 \subsubsection{Early days and the advent of the perceptron}
 
 Perhaps the most intuitive way to introduce \acrlong{ai} is through the framework provided by Russell and Norvig. They propose that \acrlong{ai} can be categorised into two main schools of thought: \textit{human-centred} and \textit{rationality-centred} (Table \ref{tab:ai-approaches}). The human-centred approach seeks to build systems that mimic human thinking or behavior. This approach is closely aligned with subfields like neuroscience, artificial general intelligence, and robotics, where the goal is to replicate or simulate human cognition. In contrast, the rationality-centred approach focuses on designing agents that make optimal decisions, independent of whether they think or act like humans. This latter approach dominates modern \acrshort{ai} research, particularly in subfields such as \acrlong{ml}, where algorithms are trained to optimise decision-making based on the data they process. 
+
+\begin{table}[htbp]
+\centering
+\caption{The four historical perspectives of artificial intelligence proposed by Russell and Norvig \cite{russell_artificial_2021}.}
+\label{tab:ai-approaches}
+\begin{tabular}{cc}
+\toprule
+\textbf{Human-centred approach} & \textbf{Rationality-centred approach} \\ \midrule
+Think like humans & Think rationally \\
+Act like humans & Act rationally \\ \bottomrule
+\end{tabular}
+\end{table}
+
 
 The earliest efforts in the field were human-centred. For example, the Turing test, introduced by Alan Turing in 1950, measures a machine’s ability to exhibit human-like intelligence by determining whether its responses are indistinguishable from that of a human’s \cite{turing_computing_1950}. 
 
@@ -335,13 +332,13 @@ The decade was not over yet; in 2017, Vaswani et al. presented the groundbreakin
 
 Soon, transformers expanded into other domains, including computer vision. The 2020 paper \textit{An Image Is Worth $16\times16$ Words} \cite{dosovitskiy_image_2020} introduced the vision transformer model which adapted transformer architectures to image processing tasks by splitting images into patches (analogous to words in text). This paper showed that transformers can surpass traditional \acrshort{cnn} architectures, however only on the condition that the models are trained on incredibly large datasets (14-300 million images).
 
-In summary, the field of \acrlong{ai} has undergone a rapid evolution in just a short period of time, from early innovations such as the perceptron and backpropagation to the emergence of \acrlong{dl} architectures like \acrshort{cnn}s and, more recently, transformers. With this historical context established, we now turn our focus to the diverse range of classifiers employed in \acrshort{uatr} to better understand how these techniques are applied in real-world scenarios.
+In summary, the field of \acrlong{ai} has undergone a rapid evolution in just a short period of time, from early innovations such as the perceptron and backpropagation to the emergence of \acrlong{dl} architectures like \acrshort{cnn}s and, more recently, transformers. 
 
 \subsection{A review of classification techniques}
 
 This thesis is rooted in the subfield of \acrlong{ml}, a branch of \acrshort{ai} that is generally divided into three main paradigms: \textit{unsupervised learning}, where the system identifies patterns and relationships given data without labelled outputs; \textit{supervised learning}, where the system is provided both input data and corresponding labels and learns to map inputs to outputs; and \textit{reinforcement learning}, where the system learns by interacting with an environment and receiving feedback in the form of rewards or penalties. Supervised learning can further be divided into regression or classification based on whether the goal is to predict a continuous quantity or discrete class labels. \acrshort{uatr} primarily employs supervised classification, where the goal is to classify a given sonar signal into a certain vessel type.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
     \centering
     \begin{tikzpicture}[]
         % Styles
@@ -388,10 +385,12 @@ There are many types of classifier algorithms (Figure \ref{fig:ml-classifiers-mi
     \label{fig:ml-classifiers-mindmap}
 \end{figure}
 
-In this section, we aim to review several key classification techniques used in \acrshort{uatr}, ranging from traditional statistical methods to more modern \acrlong{dl} approaches. In total, over 300 journal articles, conference papers, theses, preprints, and books were collected from various sources including Google Scholar, SemanticScholar, and The University of Sydney library. These were then sorted by citation count to determine the impact of the work. The top 50 pieces of research were then read, reviewed, and summarised for the following literature review \ref{tab:classification-review-summary}.
+In this section, we aim to review several key classification techniques used in \acrshort{uatr}, ranging from traditional statistical methods to more modern \acrlong{dl} approaches. In total, over 300 journal articles, conference papers, theses, preprints, and books were collected from various sources including Google Scholar, SemanticScholar, and The University of Sydney library. These were then sorted by citation count to determine the impact of the work. The top pieces of research were then read, reviewed, and summarised for the following literature review. A summary of the papers reviewed can be found in Table \ref{tab:classification-review-summary}.
 
 \begin{sidewaystable}[htbp]
 \centering
+\caption{Summary of high-impact papers in the field of underwater acoustic target recognition.}
+\label{tab:classification-review-summary}
 \begin{tabular}{lllll}
 \toprule
 \textbf{Paper} & \textbf{Year} & \textbf{Features} & \textbf{Architecture} & \textbf{Dataset} \\ \midrule
@@ -407,8 +406,6 @@ Hong et al. \cite{hong_underwater_2021, hongUnderwaterAcousticTarget2021a} & 202
 Doan et al. \cite{doan_underwater_2022} & 2022 & - & Dense-CNN & Proprietary \\
 Feng and Zhu \cite{feng_transformer-based_2022} & 2022 & Mel spectrogram & Transformer & ShipsEar, DeepShip\\ \bottomrule
 \end{tabular}
-\caption{Summary of high-impact papers in the field of underwater acoustic target recognition.}
-\label{tab:classification-review-summary}
 \end{sidewaystable}
 
 \subsubsection{Multi-layer perceptron}
@@ -512,7 +509,7 @@ After pooling, it is common to have an activation function in the convolutional 
     \text{ReLU}(x) = \max(0, x)
 \end{equation}
 
-Batch normalisation is the last layer in a convolutional block. Batch norm helps improve the training speed and stability of deep neural networks through normalising the activation output of a layer, ensuring that the data distribution remains consistent throughout the network. This reduces what's known as \textit{internal covariate shift}, where the distribution of activations changes during training making optimisation more difficult. Batch normalisation allows higher learning rates and reduces sensitivity to the initialisation of parameters. Proposed in a 2015 paper \cite{ioffe_batch_2015}, batch norm is applied as:
+Batch normalisation is an optional but extremely common final layer in a convolutional block. Batch normalisation helps improve the training speed and stability of deep neural networks through normalising the activation output of a layer, ensuring that the data distribution remains consistent throughout the network. This reduces what's known as \textit{internal covariate shift}, where the distribution of activations changes during training making optimisation more difficult. Batch normalisation allows higher learning rates and reduces sensitivity to the initialisation of parameters. Proposed in a 2015 paper \cite{ioffe_batch_2015}, batch norm is applied as:
 \begin{equation}
     \hat{x} = \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}}
 \end{equation}
@@ -522,7 +519,7 @@ The combination of the above operations allows the network to progressively dete
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\textwidth]{img/ch1/segnet.png}
+    \includegraphics[width=0.9\textwidth]{img/ch1/segnet.png}
     \caption{The SegNet architecture, obtained from \cite{badrinarayanan_segnet_2015}.}
     \label{fig:segnet}
 \end{figure}
@@ -533,9 +530,33 @@ An \acrlong{ae} is a specialised form of an encoder-decoder network designed pri
 
 While there are many variations of autoencoders, there are three key types which are most prominent in the literature: the \acrfull{cae}, the \acrfull{sae}, and the \acrfull{vae}.
 
-\paragraph{Convolutional autoencoder} \acrshort{cae}s are built upon the architecture of \acrshort{cnn}s, but, unlike traditional \acrshort{cnn}s, do not end with a classification layer. Instead, the decoder simply reconstructs the original input. This makes CAEs highly effective for unsupervised learning tasks such as image denoising and anomaly detection. The convolutional layers help in capturing local spatial patterns, making CAEs ideal for handling image or time-series data.
+\paragraph{Convolutional autoencoder} \acrshort{cae}s are built upon the architecture of \acrshort{cnn}s, but, unlike traditional \acrshort{cnn}s, do not end with a classification layer. Instead, the decoder simply reconstructs the original input. This makes CAEs highly effective for unsupervised learning tasks such as image denoising and anomaly detection. The convolutional layers help in capturing local spatial patterns, making CAEs ideal for handling image or time-series data. 
 
-\paragraph{Sparse autoencoder} \acrshort{sae}s introduce a sparsity constraint on the hidden layers of the network, which ensures that only a small number of neurons are active at any given time. This leads the model to learn compact, efficient representations of data, often uncovering more interpretable features. Earlier methods to impose sparsity, such as KL-divergence, aimed to control the average neuron activation relative to a predefined sparsity level. However, more recent approaches like Dropout, introduced by Hinton and Srivastava \cite{hinton_improving_2012, srivastava_dropout_2014}, enforce sparsity more intuitively by randomly deactivating neurons during training, improving generalisation and preventing co-adaptation.
+Mathematically, for a given input image $X$, the encoder compresses the input into a latent representation $Y$ in a lower-dimensional space. This can be represented as
+\[
+Y = \text{encoder}(X) = \sigma(X * W + b)
+\]
+where $W$ is a set of 2D convolutional filters (weights), $*$ is the 2D convolution operator, $b$ is the bias term (a vector corresponding to the number of filters), $\sigma$ is an activation function (e.g., ReLU), and $Y$ is the encoded latent representation. Similarly, the decoder reconstructs the input from the latent representation:
+\[
+G = \text{decoder}(Y) = \sigma(Y * \tilde{W} + \tilde{b})
+\]
+where $\tilde{W}$ is a set of transposed convolutional filters (weights used for deconvolution), $\tilde{b}$ is the bias term for the decoder, and $G$ is the reconstructed output.
+
+The goal of the \acrshort{cae} is to minimise the reconstruction error, which can be achieved using a cost function such as the mean squared error:
+\[
+E(\theta) = \frac{1}{n} \sum_{i=1}^{n} \| G_i - X_i \|^2
+\]
+where $n$ is the number of training samples, $X_i$ is the $i$-th input sample, and $G_i$ is the corresponding reconstructed output. The \acrshort{cae} uses backpropagation to minimise this error, which requires computing the gradients of the cost function with respect to the encoder and decoder weights. For the encoder weights $W$, the gradient is:
+\[
+\frac{\partial E}{\partial W} = \frac{\partial E}{\partial Y} \cdot \frac{\partial Y}{\partial W}
+\]
+For the decoder weights $\tilde{W}$, the gradient is:
+\[
+\frac{\partial E}{\partial \tilde{W}} = \frac{\partial E}{\partial G} \cdot \frac{\partial G}{\partial \tilde{W}}
+\]
+By iteratively updating the weights using these gradients, the CAE learns to minimise the reconstruction error.
+
+\paragraph{Sparse autoencoder} \acrshort{sae}s introduce a sparsity constraint on the hidden layers of the network, which ensures that only a small number of neurons are active at any given time. This leads the model to learn compact, efficient representations of data, often uncovering more interpretable features. Earlier methods to impose sparsity, such as KL-divergence, aimed to control the average neuron activation relative to a predefined sparsity level \cite{ng_sparse_2010}. However, more recent approaches like Dropout, introduced by Hinton and Srivastava \cite{hinton_improving_2012, srivastava_dropout_2014}, enforce sparsity more intuitively by randomly deactivating neurons during training, improving generalisation and preventing co-adaptation \cite{muhaddisa_barat_ali_use_2015}.
 
 \paragraph{Variational autoencoder} While \acrshort{vae}s share the same encoder-decoder structure, they are designed for generative tasks, where the goal is to generate new data samples rather than merely reconstruct input data. VAEs introduce a probabilistic element to the latent space, learning a distribution over latent variables. Since this paper does not focus on generative models or data generation techniques, the discussion of VAEs will be limited, though they remain a significant area of research in unsupervised representation learning.
 
@@ -543,6 +564,8 @@ A brief review of the most impactful autoencoder-related literature has been pro
 
 \begin{sidewaystable}
 \centering
+\caption{A brief literature review of papers using autoencoders for UATR.}
+\label{tab:ae-review}
 \begin{tabular}{lllp{4cm}p{11cm}}
 \toprule
 \textbf{Paper} & \textbf{Year} & \textbf{Architecture} & \textbf{Feature} & \textbf{Notes} \\ \midrule
@@ -554,8 +577,6 @@ Chen and Shang \cite{chenUnderwaterTargetRecognition2019} & 2019 & CAE & Spectro
 Irfan et al. \cite{irfan_novel_2021} & 2020 & CAE & Underwater images & CAE embedded with a softmax classifier for underwater image classification using Fish4Knowledge and ImageNet datasets. \\
 Irfan et al. \cite{irfan_deepship_2021} & 2021 & CAE & Mel spectrogram & Introduced the DeepShip dataset and benchmarked it using a CAE model. \\ \bottomrule
 \end{tabular}
-\caption{A brief literature review of papers using autoencoders for UATR.}
-\label{tab:ae-review}
 \end{sidewaystable}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -580,12 +601,14 @@ Most datasets used in underwater acoustics research have traditionally been priv
 
 However, none of the data recorded in these studies is available publicly. Excluding the work by McKenna et al., all datasets were quite small and would only work well for traditional digital signal processing approaches. Furthermore, most of these studies were conducted for purposes other than \acrshort{uatr}, such as noise pollution monitoring. Therefore, the data might not be structured in a way that is useful for vessel classification.
 
-\subsubsection{ShipsEar}
+\subsubsection{ShipsEar}\label{subsubsec:shipsear}
 
 ShipsEar \cite{david_santos-dominguez_shipsear_2016} was published by Santos-Dom\'inguez et al. in 2016 and contains 78 recordings of 39 ships in 11 vessel classes, spanning a duration of 162 minutes and 18 seconds. The authors also included 12 recordings of various ambient noise sources with the view that it would be useful to help discriminate between true signals and background noise, bringing the total dataset length to 181 minutes and 18 seconds. Each recording lasts between 15 seconds to 10 minutes. A detailed breakdown of the database can be found in Table \ref{tab:shipsear-summary}. 
 
-\begin{table}[htbp]
+\begin{table}[tbp]
 \centering
+\caption{Summary of the ShipsEar dataset}
+\label{tab:shipsear-summary}
 \begin{tabular}{llll}
 \toprule
 \textbf{Vessel class} & \textbf{Ships} & \textbf{Recordings} & \textbf{Total recording time (min:s)} \\ \midrule
@@ -603,8 +626,6 @@ Fish boat     & 4  & 4   & 8:34  \\
 Ambient noise & –  & 12  & 19:00 \\ 
 \textbf{Total}& \textbf{39} & \textbf{90} & \textbf{181:18} \\ \bottomrule
 \end{tabular}
-\caption{Summary of the ShipsEar dataset}
-\label{tab:shipsear-summary}
 \end{table}
 
 Recordings were made off the Spanish Atlantic coast in northwest Spain in autumn 2012 and summer 2013. This location was chosen for its ``intensity and variety of traffic'' given that it is one of the largest fishing ports in the world and also experiences heavy passenger and goods traffic. This allowed the authors to record sonar signals from a variety of vessel classes such as motor boats, sail boats, fishing boats, dredgers etc. The authors also note that because the recordings are from the real environment (as compared to synthetic datasets), the dataset inevitably contains man-made and natural background noise such as from ``waves crashing against the port infrastructure'' and ``occasional vocalisations by marine mammals''.
@@ -622,8 +643,10 @@ The database can be viewed at \url{https://underwaternoise.atlanttic.uvigo.es}, 
 
 Despite its limitations, such as its relatively small volume and class imbalance, the ShipsEar dataset remains a significant contribution to the field of \acrshort{uatr}. With around 3 hours of sonar recordings, it provided a foundation for \acrlong{ml} and signal processing approaches, though not ideal for \acrlong{dl} models which typically require larger datasets to avoid overfitting. The class imbalance issue --- where the largest class (Passengerships) has approximately 31 times more data than the smallest class (Trawler) -- increases this challenge. This is why Santos-Domínguez et al. suggested grouping the original 11 vessel classes into 5 experimental categories; these have since become the standard for research using the dataset (Table \ref{tab:shipsear-merged}).
 
-\begin{table}[htbp]
+\begin{table}[tbp]
 \centering
+\caption{Experimental classes created for practical use of the ShipsEar dataset}
+\label{tab:shipsear-merged}
 \begin{tabular}{lll}
 \toprule
 \textbf{Class} & \textbf{Vessel classes} & \textbf{Recordings} \\ \midrule
@@ -633,8 +656,6 @@ C & Passenger ferry & 30 \\
 D & Ocean liners and ro-ro ships & 12 \\
 E & Background noise & 12 \\ \bottomrule
 \end{tabular}
-\caption{Experimental classes created for practical use of the ShipsEar dataset}
-\label{tab:shipsear-merged}
 \end{table}
 
 For over half a decade, ShipsEar remained the largest publicly-available labelled underwater acoustic dataset, enabling great progress in \acrshort{uatr} research and serving as a benchmark for classification tasks in the underwater environment. However, as newer, more extensive datasets have become available, the role of the ShipsEar dataset has become more supplementary than primary in the development of modern \acrshort{uatr} systems.
@@ -643,10 +664,10 @@ For over half a decade, ShipsEar remained the largest publicly-available labelle
 
 DeepShip \cite{irfan_deepship_2021}, published by Irfan et al. in 2021, consists of 613 recordings of 265 ships, categorised into four vessel classes, with a total duration of 47 hours and 4 minutes. Each recording ranges from 6 seconds to 25 minutes in length. A detailed breakdown of the database is shown in Table \ref{tab:deepship-summary}.
 
-The recordings were collected over more than two years, from May 2016 to October 2018, in the Strait of Georgia, a busy shipping route located between Vancouver Island and British Columbia, Canada. This area was selected because of its high vessel traffic, allowing the researchers to capture a diverse set of ships across multiple classes.
-
-\begin{table}[htbp]
+\begin{table}[bp]
 \centering
+\caption{Summary of the DeepShip dataset}
+\label{tab:deepship-summary}
 \begin{tabular}{llll}
 \toprule
 \textbf{Vessel class} & \textbf{Ships} & \textbf{Recordings} & \textbf{Total recording time (min)} \\ \midrule
@@ -656,9 +677,9 @@ Tanker          & 133 & 240   & 765 \\
 Tug             & 17  & 70    & 677 \\
 \textbf{Total}  & \textbf{265} & \textbf{613} & \textbf{2824} \\ \bottomrule
 \end{tabular}
-\caption{Summary of the DeepShip dataset}
-\label{tab:deepship-summary}
 \end{table}
+
+The recordings were collected over more than two years, from May 2016 to October 2018, in the Strait of Georgia, a busy shipping route located between Vancouver Island and British Columbia, Canada. This area was selected because of its high vessel traffic, allowing the researchers to capture a diverse set of ships across multiple classes.
 
 Each recording was captured using an icListen AF hydrophone at a sampling rate of 32 kHz, with the depth of the hydrophone ranging between 141 and 147 meters below sea level. Unlike the ShipsEar dataset, which utilised up to three hydrophones, DeepShip used a single hydrophone. To ensure high-quality data, Irfan et al. only recorded when a single vessel was within a 2 km radius of the hydrophone. The dataset is publicly available for download at \url{https://github.com/irfankamboh/DeepShip}.
 
@@ -672,9 +693,9 @@ However, a limitation of DeepShip is the restricted nature of its vessel classes
 
 With the issue of data availability in mind, two new underwater acoustic datasets have been published in 2024: QiandaoEar22 and Oceanship. These are both very recently published and have no citations at the time of writing.
 
-QiandaoEar22 \cite{du_qiandaoear22_2024}, published by Du and Hong in May 2024, is a multi-target acoustic dataset consisting of 9 hours and 28 minutes of signal data and 21 hours and 58 minutes of background noise data.
+QiandaoEar22 \cite{du_qiandaoear22_2024, duQiandaoEar22HighqualityNoise2024}, originally published by Du and Hong in May 2024, is a multi-target acoustic dataset consisting of 9 hours and 28 minutes of signal data and 21 hours and 58 minutes of background noise data.
 
-The recordings were taken over four days between the 24th and 28th of June, 2022. The recording locations were off the coast of Houdao (Good Luck) Island in Qiandao (Thousand Island) Lake in China's Zhejiang Province. According to the authors, the recording period coincided with the local tourism season, causing a variety of vessel classes to be recorded such as speedboats, large tour boats, cargo ships, sanitation vessels, small boats, and research ships \cite[5]{du_qiandaoear22_2024}.
+The recordings were taken over four days between the 24th and 28th of June, 2022. The recording locations were off the coast of Houdao Island in Qiandao Lake, located in China's Zhejiang Province. According to the authors, the recording period coincided with the local tourism season, causing a variety of vessel classes to be recorded such as speedboats, large tour boats, cargo ships, sanitation vessels, small boats, and research ships \cite[5]{du_qiandaoear22_2024}.
 
 The authors used a single DigitalHyd SR-1 hydrophone (the same model used by the ShipsEar team) anchored using a counterweight and buoy system to set its depth. The sampling rate was 52,734 Hz with a sampling resolution of 16 bits. The water depth ranged from 30 to 50 metres and the hydrophone was placed at a depth between 10 and 15 metres. 
 
